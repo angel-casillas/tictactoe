@@ -63,7 +63,7 @@
 		#tablero table tr td.empty a {
 			cursor: pointer;
 		}
-		#tablero.finalizado table tr td a {
+		#container.finalizado table tr td a {
 			cursor: not-allowed;
 		}
 		
@@ -105,32 +105,72 @@
 			left: 0;
 			display: none;
 		}
-		#tablero.finalizado.row0 .win img.row {
+		#container.finalizado.row0 .win img.row {
 			display: block;
 		}
-		#tablero.finalizado.row1 .win img.row {
+		#container.finalizado.row1 .win img.row {
 			display: block;
 			top: 81px;
 		}
-		#tablero.finalizado.row2 .win img.row {
+		#container.finalizado.row2 .win img.row {
 			display: block;
 			top: 162px;
 		}
-		#tablero.finalizado.col0 .win img.col {
+		#container.finalizado.col0 .win img.col {
 			display: block;
 		}
-		#tablero.finalizado.col1 .win img.col {
+		#container.finalizado.col1 .win img.col {
 			display: block;
 			left: 81px;
 		}
-		#tablero.finalizado.col2 .win img.col {
+		#container.finalizado.col2 .win img.col {
 			display: block;
 			left: 162px;
 		}
-		#tablero.finalizado.diag1 .win img.diag1 {
+		#container.finalizado.diag1 .win img.diag1 {
 			display: block;
 		}
-		#tablero.finalizado.diag2 .win img.diag2 {
+		#container.finalizado.diag2 .win img.diag2 {
+			display: block;
+		}
+		
+		.turno {
+			height: 79px;
+		}
+		.turno img {
+			display: none; 
+			margin: 0 auto;
+		}		
+		#container.finalizado .turno {
+			visibility: hidden;
+		}
+		#container.turno1 .turno img.t1 {
+			display: block;
+		}
+		#container.turno2 .turno img.t2 {
+			display: block;
+		}
+		
+		.winner {
+			display: none;	
+			text-align: center;
+		} 
+		.winner h1 {
+			color: #fff;
+			margin: 50px 0 0px;
+		}
+		.winner img {
+			display: none;		
+			margin: 0 auto;
+		}
+		#container.finalizado .winner {
+			display: block;		
+		}
+		
+		#container.finalizado.t1wins .winner img.t1 {
+			display: block;
+		}
+		#container.finalizado.t2wins .winner img.t2 {
 			display: block;
 		}
 
@@ -148,6 +188,10 @@
 				<option value="rndm">Modo infinito (aleatorio)</option>
 			</select>
 		</div>
+		<div class="turno">
+			<img class="t1" src="./img/t1.png"/>
+			<img class="t2" src="./img/t2.png"/>
+		</div> <!-- .turno -->
 		<div id="tablero">
 			<table>
 				<tr id="row1" class="row">
@@ -175,6 +219,12 @@
 		</div> <!-- #tablero -->
 		<div class="botonera">
 			<a href="#" id="clean" class="btn cleanbtn">Reiniciar</a>
+		</div> <!-- .botonera -->
+		
+		<div class="winner">
+			<h1>Winner!</h1>
+			<img class="t1" src="./img/t1.png"/>
+			<img class="t2" src="./img/t2.png"/>
 		</div> <!-- .botonera -->
 		
 	</div> <!-- #container -->

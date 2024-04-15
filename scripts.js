@@ -36,13 +36,15 @@ $(document).ready(function(){
 });
 
 function start() {
-  $("#tablero").removeClass("finalizado row0 row1 row2  col0 col1 col2 diag1 diag2");
+  $("#container").removeClass("finalizado turno2 t1wins t2wins row0 row1 row2  col0 col1 col2 diag1 diag2");
   tablero = [[0,0,0],[0,0,0],[0,0,0]];
   turno = 1;
   p1_checks = [];
   p2_checks = [];
 
   $("#tablero")
+    .addClass("turno1");
+  $("#container")
     .addClass("turno1");
 
   $("#tablero table tr td a").remove();
@@ -64,7 +66,7 @@ function start() {
   $("#tablero table tr td a").click(function(e) {
     e.preventDefault();
 
-    if ($("#tablero").hasClass("finalizado"))
+    if ($("#container").hasClass("finalizado"))
       return false;
 
     var td = $(this).parent();
@@ -124,7 +126,10 @@ function start() {
       } else {
         turno=1;
       }
-
+      
+      $("#container")
+        .removeClass("turno1 turno2")
+        .addClass("turno" + turno);
     }
 
   });
@@ -217,9 +222,10 @@ function checkCol(c) {
 
 
 function end(result) {
-  $("#tablero")
-    .addClass("finalizado")
-    .addClass(result.type);
+  
+  $("#container").addClass("finalizado")
+    .addClass(result.type)
+    .addClass("t" + result.winner+"wins");
 
   if (result.type=="col") {
     $("#tablero").addClass(result.type);
