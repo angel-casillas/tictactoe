@@ -22,7 +22,7 @@ $(document).ready(function(){
     start();
   });
 
-  $("#menu_mode").click(function(e) {
+  $("#menu_mode").change(function(e) {
     e.preventDefault();
     mode = $(this).val();
 
@@ -103,7 +103,7 @@ function start() {
 
       if (mode=='last' || mode=='rndm') {
         
-        n = mode=='rndm'? getRandomInt(3) : 0;
+        n = mode =='rndm'? getRandomInt(3) : 0;
 
         if (turno==1) {
           p1_checks.push(cell);
