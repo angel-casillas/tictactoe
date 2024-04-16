@@ -36,7 +36,7 @@ $(document).ready(function(){
 });
 
 function start() {
-  $("#container").removeClass("finalizado turno2 t1wins t2wins row0 row1 row2  col0 col1 col2 diag1 diag2");
+  $("#container").removeClass("finalizado tie turno2 t1wins t2wins row0 row1 row2  col0 col1 col2 diag1 diag2");
   tablero = [[0,0,0],[0,0,0],[0,0,0]];
   turno = 1;
   p1_checks = [];
@@ -97,8 +97,8 @@ function start() {
     const selected = td.data("cell");
     tablero[selected.r][selected.c] = turno;
     
-    if (!checkLine()) {
-    
+    if (!checkLine() && !checkTie()) {
+      
       let cell = td.data("cell");
 
       if (mode=='last' || mode=='rndm') {
@@ -135,6 +135,15 @@ function start() {
   });
 }
 
+function checkTie() {
+
+  if (mode==='normal' && 0===countZeros()) {
+    end({tie: true});
+    return true;
+  }
+
+  return false;
+}
 
 function checkLine() {
   let result = checkRows();
@@ -223,14 +232,21 @@ function checkCol(c) {
 
 function end(result) {
   
-  $("#container").addClass("finalizado")
-    .addClass(result.type)
-    .addClass("t" + result.winner+"wins");
+  if (result.tie) {
+    //Empate
+    $("#container").addClass("finalizado tie");
+    
+    console.log("Tie!");
+  } else {
+    $("#container").addClass("finalizado")
+      .addClass(result.type)
+      .addClass("t" + result.winner+"wins");
 
-  if (result.type=="col") {
-    $("#tablero").addClass(result.type);
+    if (result.type=="col") {
+      $("#tablero").addClass(result.type);
+    }
+    console.log("winner!", result);
   }
-  console.log("winner!", result);
 }
 
 
@@ -243,4 +259,14 @@ function marcaBorrar(cell) {
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+
+function countZeros() {
+  var c = 0;
+  for (r=0;r<3;r++) {
+    c += tablero[r].filter(v => v === 0).length;
+  } 
+  console.log('zeros', c);
+  return c;
 }

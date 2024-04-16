@@ -151,26 +151,35 @@
 			display: block;
 		}
 		
-		.winner {
+		.result .winner, 
+		.result .tie {
 			display: none;	
 			text-align: center;
 		} 
-		.winner h1 {
+		.result .winner h1,
+		.result .tie h1 {
 			color: #fff;
 			margin: 50px 0 0px;
 		}
-		.winner img {
+		.result .winner img {
 			display: none;		
 			margin: 0 auto;
 		}
-		#container.finalizado .winner {
+		#container.finalizado .result .winner {
+			display: block;		
+		}
+
+		#container.finalizado.tie .result .winner {
+			display: none;		
+		}
+		#container.finalizado.tie .result .tie {
 			display: block;		
 		}
 		
-		#container.finalizado.t1wins .winner img.t1 {
+		#container.finalizado.t1wins .result .winner img.t1 {
 			display: block;
 		}
-		#container.finalizado.t2wins .winner img.t2 {
+		#container.finalizado.t2wins .result .winner img.t2 {
 			display: block;
 		}
 
@@ -221,11 +230,16 @@
 			<a href="#" id="clean" class="btn cleanbtn">Reiniciar</a>
 		</div> <!-- .botonera -->
 		
-		<div class="winner">
-			<h1>Winner!</h1>
-			<img class="t1" src="./img/t1.png"/>
-			<img class="t2" src="./img/t2.png"/>
-		</div> <!-- .botonera -->
+		<div class="result">
+			<div class="winner">
+				<h1>Ganador!</h1>
+				<img class="t1" src="./img/t1.png"/>
+				<img class="t2" src="./img/t2.png"/>
+			</div> <!-- .winner -->
+			<div class="tie">
+				<h1>Empate!</h1>
+			</div>
+		</div> <!-- .result -->
 		
 	</div> <!-- #container -->
 	
