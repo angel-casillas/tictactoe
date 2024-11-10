@@ -11,5 +11,5 @@
 
 **Demo**
 
-Demo at <a href="https://angel-casillas.github.io/ttt/">demo</a>.
+Demo at <a target="_balnk" href="https://angel-casillas.github.io/ttt/">demo</a>.
 
